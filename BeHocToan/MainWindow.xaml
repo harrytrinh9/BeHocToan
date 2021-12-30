@@ -1,0 +1,166 @@
+﻿<Window
+    x:Class="BeHocToan.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:BeHocToan"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Bống học toán | Bản quyền (C) 2021 Trịnh Hồng Hà"
+    Width="800"
+    Height="450"
+    Loaded="Window_Loaded"
+    WindowState="Maximized"
+    KeyDown="Window_KeyDown"
+    mc:Ignorable="d">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/Tho be hoc toan.jpg" Opacity="0.3" />
+    </Window.Background>
+    <Window.Resources>
+        <Style x:Key="roudedTextBox" TargetType="TextBox">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="20" />
+                </Style>
+            </Style.Resources>
+            <Setter Property="Opacity" Value="0.6" />
+            <Setter Property="FontSize" Value="130" />
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Margin" Value="3" />
+        </Style>
+        <Style x:Key="roundedButton">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="20" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="34*" />
+            <RowDefinition Height="25*" />
+            <RowDefinition Height="11*" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <Image x:Name="imgRabbit" Source="Images/tho_bt.png" HorizontalAlignment="Right" />
+        <TextBlock
+            Margin="10,0,9.6,0"
+            VerticalAlignment="Top"
+            FontSize="90"
+            FontWeight="Bold"
+            Foreground="YellowGreen" Height="120">
+            Bống học toán
+        </TextBlock>
+        <Grid Grid.Row="1" Margin="0,2.6,-0.4,2.2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBox
+                PreviewTextInput="NumberValidationTextBox"
+                x:Name="txt1"
+                KeyDown="Txt1_KeyDown"
+                Style="{StaticResource roudedTextBox}"
+                TextChanged="TextChanged" />
+            <TextBox
+                x:Name="txtOperator"
+                Grid.Column="1"
+                KeyDown="txtOperator_KeyDown"
+                Style="{StaticResource roudedTextBox}"
+                TextChanged="TextChanged" />
+            <TextBox
+                PreviewTextInput="NumberValidationTextBox"
+                x:Name="txt2"
+                Grid.Column="2"
+                KeyDown="txt2_KeyDown"
+                Style="{StaticResource roudedTextBox}"
+                TextChanged="TextChanged" />
+            <TextBox
+                x:Name="txtEqual"
+                Grid.Column="3"
+                IsReadOnly="True"
+                Style="{StaticResource roudedTextBox}">
+                
+            </TextBox>
+            <TextBox
+                x:Name="txtResult"
+                Grid.Column="4"
+                PreviewTextInput="txtResult_PreviewTextInput"
+                KeyDown="txtResult_KeyDown"
+                Style="{StaticResource roudedTextBox}"
+                TextChanged="txtResult_TextChanged" />
+        </Grid>
+        <Grid Grid.Row="2" Margin="0,6.8,-0.4,58.4" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <WrapPanel x:Name="panel1" Margin="3" />
+            <WrapPanel
+                x:Name="panel2"
+                Grid.Column="2"
+                Margin="3" />
+        </Grid>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,9.6,-0.4,0.4">
+            <Button
+                MouseEnter="btnPhepCong_MouseEnter"
+                x:Name="btnPhepCong"
+                Width="200"
+                Margin="3"
+                Click="btnPhepCong_Click"
+                Style="{StaticResource roundedButton}">
+                <StackPanel Orientation="Horizontal">
+                    <Image VerticalAlignment="Center" Source="Images/icons8_plus_96px.png" />
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontSize="20"
+                        FontWeight="Bold">
+                        Phép cộng
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+            <Button
+                MouseEnter="btnPhepTru_MouseEnter"
+                x:Name="btnPhepTru"
+                Width="200"
+                Margin="15,3,3,3"
+                Click="btnPhepTru_Click"
+                Style="{StaticResource roundedButton}">
+                <StackPanel Orientation="Horizontal">
+                    <Image VerticalAlignment="Center" Source="Images/icons8_minus_96px.png" />
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontSize="20"
+                        FontWeight="Bold">
+                        Phép trừ
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+            <Button
+                x:Name="btnNgauNhien"
+                Width="200"
+                Margin="15,3,3,3"
+                Click="btnNgauNhien_Click"
+                MouseEnter="btnNgauNhien_MouseEnter"
+                Style="{StaticResource roundedButton}">
+                <StackPanel Orientation="Horizontal">
+                    <Image VerticalAlignment="Center" Source="Images/icons8_ask_question_80px_1.png" />
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontSize="20"
+                        FontWeight="Bold">
+                        Ngẫu nhiên
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
