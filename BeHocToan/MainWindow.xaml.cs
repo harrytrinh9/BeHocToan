@@ -18,6 +18,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LibVLCSharp.Shared;
+using LibVLCSharp.WPF;
 //using System.Text.Json;
 
 namespace BeHocToan
@@ -28,16 +30,15 @@ namespace BeHocToan
     public partial class MainWindow : Window
     {
         private readonly Random rd = new Random();
-
-        private SoundPlayer mediaPlayer = new SoundPlayer();
-        //private WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
+        private readonly LibVLC libvlc;
         private int CongDon = 0;
         private bool isCorrect;
 
         public MainWindow()
         {
             InitializeComponent();
-            //Tts("Xin chào");
+            Core.Initialize();
+            libvlc = new LibVLC(enableDebugLogs: true);
         }
 
         private async void TxtResult_KeyDown(object sender, KeyEventArgs e)
@@ -187,7 +188,8 @@ namespace BeHocToan
             {
                 buoi = "tối";
             }
-            string msg = $"Chào buổi {buoi} bạn Gia Linh, nào mình cùng làm toán nhé. Bạn hãy chọn các nút bên dưới để chúng mình cùng bắt đầu";
+
+            string msg = $"Chào buổi {buoi} bạn Gia Linh, hôm nay là {DateTime.Now.DayOfWeek.ToThuVN()}. Nào, mình cùng làm toán nhé. Bạn hãy chọn các nút bên dưới để chúng mình cùng bắt đầu";
             TextToSpeech(msg);
         }
 
@@ -261,7 +263,7 @@ namespace BeHocToan
             TextToSpeech(str);
         }
 
-        private void txtResult_PreviewKeyDown(object sender, TextCompositionEventArgs e)
+        private void TxtResult_PreviewKeyDown(object sender, TextCompositionEventArgs e)
         {
 
             if (txtResult.Text == "?")
@@ -434,11 +436,9 @@ namespace BeHocToan
         {
             string url = GetTTSUrl(text);
             await Task.Delay(1000);
-            //wplayer.URL = url;
-            //wplayer.controls.play();
-            //MediaElement me = new MediaElement();
-            //me.Source = new Uri(url);
-            //me.Play();
+            var media = new Media(libvlc, new Uri(url));
+            var mediaplayer = new LibVLCSharp.Shared.MediaPlayer(media);
+            mediaplayer.Play();
 
         }
 
@@ -458,18 +458,7 @@ namespace BeHocToan
             TextToSpeech("Ngẫu nhiên");
         }
 
-        private void Tts(string text)
-        {
-            string result = Task.Run(async () =>
-            {
-                string payload = text;
-                HttpClient client = new HttpClient();
-                client.DefaultRequestHeaders.Add("api-key", "CDN2TIuOWGNhRyUI26JCogWHTHM0f177");
-                client.DefaultRequestHeaders.Add("speed", "");
-                client.DefaultRequestHeaders.Add("voice", "banmai");
-                var response = await client.PostAsync("https://api.fpt.ai/hmi/tts/v5", new StringContent(payload));
-                return await response.Content.ReadAsStringAsync();
-            }).GetAwaiter().GetResult();
-        }
     }
+
+
 }

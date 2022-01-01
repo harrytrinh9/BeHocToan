@@ -161,6 +161,9 @@
                     </TextBlock>
                 </StackPanel>
             </Button>
+            <MediaElement x:Name="mediaElement" Width="100">
+
+            </MediaElement>
         </StackPanel>
 
     </Grid>
