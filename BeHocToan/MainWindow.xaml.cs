@@ -28,18 +28,19 @@ namespace BeHocToan
     public partial class MainWindow : Window
     {
         private readonly Random rd = new Random();
-        //private SoundPlayer mediaPlayer = new SoundPlayer();
-        WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
+
+        private SoundPlayer mediaPlayer = new SoundPlayer();
+        //private WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
         private int CongDon = 0;
         private bool isCorrect;
 
         public MainWindow()
         {
             InitializeComponent();
-            Tts("Xin chào");
+            //Tts("Xin chào");
         }
 
-        private async void txtResult_KeyDown(object sender, KeyEventArgs e)
+        private async void TxtResult_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
@@ -279,7 +280,7 @@ namespace BeHocToan
             //}
         }
 
-        private void btnNgauNhien_Click(object sender, RoutedEventArgs e)
+        private void BtnNgauNhien_Click(object sender, RoutedEventArgs e)
         {
             RaDeNgauNhien();
         }
@@ -416,14 +417,14 @@ namespace BeHocToan
             }
         }
 
-        private void txtResult_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void TxtResult_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (txtResult.Text == "?")
             {
                 txtResult.Text = string.Empty;
             }
 
-            TextBox txtbox = (TextBox)sender;
+            //TextBox txtbox = (TextBox)sender;
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
@@ -433,22 +434,29 @@ namespace BeHocToan
         {
             string url = GetTTSUrl(text);
             await Task.Delay(1000);
-            wplayer.URL = url;
-            wplayer.controls.play();
+            //wplayer.URL = url;
+            //wplayer.controls.play();
+            //MediaElement me = new MediaElement();
+            //me.Source = new Uri(url);
+            //me.Play();
+            SoundPlayer sp = new SoundPlayer();
+            sp.SoundLocation = url;
+            sp.Load();
+            sp.Play();
         }
 
 
-        private void btnPhepCong_MouseEnter(object sender, MouseEventArgs e)
+        private void BtnPhepCong_MouseEnter(object sender, MouseEventArgs e)
         {
             TextToSpeech("Phép cộng");
         }
 
-        private void btnPhepTru_MouseEnter(object sender, MouseEventArgs e)
+        private void BtnPhepTru_MouseEnter(object sender, MouseEventArgs e)
         {
             TextToSpeech("Phép trừ");
         }
 
-        private void btnNgauNhien_MouseEnter(object sender, MouseEventArgs e)
+        private void BtnNgauNhien_MouseEnter(object sender, MouseEventArgs e)
         {
             TextToSpeech("Ngẫu nhiên");
         }

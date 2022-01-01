@@ -90,8 +90,8 @@
             <TextBox
                 x:Name="txtResult"
                 Grid.Column="4"
-                PreviewTextInput="txtResult_PreviewTextInput"
-                KeyDown="txtResult_KeyDown"
+                PreviewTextInput="TxtResult_PreviewTextInput"
+                KeyDown="TxtResult_KeyDown"
                 Style="{StaticResource roudedTextBox}"
                 TextChanged="txtResult_TextChanged" />
         </Grid>
@@ -111,7 +111,7 @@
         </Grid>
         <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,9.6,-0.4,0.4">
             <Button
-                MouseEnter="btnPhepCong_MouseEnter"
+                MouseEnter="BtnPhepCong_MouseEnter"
                 x:Name="btnPhepCong"
                 Width="200"
                 Margin="3"
@@ -128,7 +128,7 @@
                 </StackPanel>
             </Button>
             <Button
-                MouseEnter="btnPhepTru_MouseEnter"
+                MouseEnter="BtnPhepTru_MouseEnter"
                 x:Name="btnPhepTru"
                 Width="200"
                 Margin="15,3,3,3"
@@ -148,8 +148,8 @@
                 x:Name="btnNgauNhien"
                 Width="200"
                 Margin="15,3,3,3"
-                Click="btnNgauNhien_Click"
-                MouseEnter="btnNgauNhien_MouseEnter"
+                Click="BtnNgauNhien_Click"
+                MouseEnter="BtnNgauNhien_MouseEnter"
                 Style="{StaticResource roundedButton}">
                 <StackPanel Orientation="Horizontal">
                     <Image VerticalAlignment="Center" Source="Images/icons8_ask_question_80px_1.png" />
