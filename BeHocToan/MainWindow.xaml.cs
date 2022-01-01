@@ -439,10 +439,7 @@ namespace BeHocToan
             //MediaElement me = new MediaElement();
             //me.Source = new Uri(url);
             //me.Play();
-            SoundPlayer sp = new SoundPlayer();
-            sp.SoundLocation = url;
-            sp.Load();
-            sp.Play();
+
         }
 
 
