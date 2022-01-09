@@ -11,6 +11,7 @@
     Loaded="Window_Loaded"
     WindowState="Maximized"
     KeyDown="Window_KeyDown"
+    Closing="Window_Closing"
     mc:Ignorable="d">
     <Window.Background>
         <ImageBrush ImageSource="Images/Tho be hoc toan.jpg" Opacity="0.3" />
@@ -93,7 +94,7 @@
                 PreviewTextInput="TxtResult_PreviewTextInput"
                 KeyDown="TxtResult_KeyDown"
                 Style="{StaticResource roudedTextBox}"
-                TextChanged="txtResult_TextChanged" />
+                TextChanged="TxtResult_TextChanged" />
         </Grid>
         <Grid Grid.Row="2" Margin="0,6.8,-0.4,58.4" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
@@ -115,7 +116,7 @@
                 x:Name="btnPhepCong"
                 Width="200"
                 Margin="3"
-                Click="btnPhepCong_Click"
+                Click="BtnPhepCong_Click"
                 Style="{StaticResource roundedButton}">
                 <StackPanel Orientation="Horizontal">
                     <Image VerticalAlignment="Center" Source="Images/icons8_plus_96px.png" />
@@ -132,7 +133,7 @@
                 x:Name="btnPhepTru"
                 Width="200"
                 Margin="15,3,3,3"
-                Click="btnPhepTru_Click"
+                Click="BtnPhepTru_Click"
                 Style="{StaticResource roundedButton}">
                 <StackPanel Orientation="Horizontal">
                     <Image VerticalAlignment="Center" Source="Images/icons8_minus_96px.png" />

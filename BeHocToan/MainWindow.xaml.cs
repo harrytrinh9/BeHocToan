@@ -160,7 +160,7 @@ namespace BeHocToan
             }
         }
 
-        private void txtResult_TextChanged(object sender, TextChangedEventArgs e)
+        private void TxtResult_TextChanged(object sender, TextChangedEventArgs e)
         {
             txtResult.Background = Brushes.White;
             imgRabbit.Source = new BitmapImage(new Uri("images/tho_bt.png", UriKind.Relative));
@@ -168,12 +168,6 @@ namespace BeHocToan
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //wplayer.URL = AppDomain.CurrentDomain.BaseDirectory + "Voices\\Chao.mp3";
-            //wplayer.controls.play();
-
-            //await Task.Delay(4000);
-            //wplayer.URL = AppDomain.CurrentDomain.BaseDirectory + "Voices\\GioiThieu.mp3";
-            //wplayer.controls.play();
             int hour = DateTime.Now.Hour;
             string buoi = "";
             if (0 < hour && hour < 12 )
@@ -193,7 +187,7 @@ namespace BeHocToan
             TextToSpeech(msg);
         }
 
-        private void btnPhepCong_Click(object sender, RoutedEventArgs e)
+        private void BtnPhepCong_Click(object sender, RoutedEventArgs e)
         {
             if (txtResult.Text == "?")
             {
@@ -226,7 +220,7 @@ namespace BeHocToan
             TextToSpeech(str);
         }
 
-        private void btnPhepTru_Click(object sender, RoutedEventArgs e)
+        private void BtnPhepTru_Click(object sender, RoutedEventArgs e)
         {
             if (txtResult.Text == "?")
             {
@@ -458,6 +452,11 @@ namespace BeHocToan
             TextToSpeech("Ngẫu nhiên");
         }
 
+        private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+           TextToSpeech("Hẹn gặp lại bạn Gia Linh nhé.");
+           await Task.Delay(3000);
+        }
     }
 
 
