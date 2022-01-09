@@ -144,7 +144,7 @@ namespace BeHocToan
             }
         }
 
-        private void txtOperator_KeyDown(object sender, KeyEventArgs e)
+        private void TxtOperator_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
@@ -152,7 +152,7 @@ namespace BeHocToan
             }
         }
 
-        private void txt2_KeyDown(object sender, KeyEventArgs e)
+        private void Txt2_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {

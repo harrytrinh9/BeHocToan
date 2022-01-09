@@ -71,14 +71,14 @@
             <TextBox
                 x:Name="txtOperator"
                 Grid.Column="1"
-                KeyDown="txtOperator_KeyDown"
+                KeyDown="TxtOperator_KeyDown"
                 Style="{StaticResource roudedTextBox}"
                 TextChanged="TextChanged" />
             <TextBox
                 PreviewTextInput="NumberValidationTextBox"
                 x:Name="txt2"
                 Grid.Column="2"
-                KeyDown="txt2_KeyDown"
+                KeyDown="Txt2_KeyDown"
                 Style="{StaticResource roudedTextBox}"
                 TextChanged="TextChanged" />
             <TextBox
